@@ -18,7 +18,21 @@ def conectar():
 def consultar_usuarios():
     conexao, cursor = conectar()
     cursor.execute('SELECT * FROM usuarios')
-    resultado = cursor
+    
+    # Recupera todos os registros do banco de dados
+
+    resultado = []
+    for linha in cursor:
+        resultado.append(linha)
+
+    # Forma alternativa ao for para recuperar os registros: resultado = cursor.fetchall()
+
     cursor.close()
     conexao.close()
     return resultado
+
+##############################################################################################################################################
+# Printar as informações do banco de dados no terminal
+
+#for user in consultar_usuarios():
+    print(user)

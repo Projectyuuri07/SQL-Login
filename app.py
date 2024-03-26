@@ -1,10 +1,11 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, request, redirect, url_for, render_template
 import conect as conexao
 
 app = Flask(__name__)
 
 @app.route("/")
 def homepage():
+    #return "<h1> Aplicação de Login funcionando! </h1>"
     return render_template('index.html')
 
 @app.route("/login", methods=["POST"])
@@ -23,11 +24,11 @@ def login():
 
 @app.route("/success/<username>")
 def success(username):
-    return f"<h1> Olá, {username}! Login bem-sucedido. </h1>"
+    return f"<h1>Login bem-sucedido - Olá, {username}!  </h1> "
 
 @app.route("/failure")
 def failure():
     return "<h1> Credenciais inválidas. Tente novamente. </h1>"
 
 if __name__=='__main__':
-    app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0', debug=True)
